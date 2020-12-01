@@ -338,6 +338,21 @@ class Main extends Controller
         }
     }
 
+    public function eventSearch($data): void
+    {
+        $eventData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        $event = (new Event())->find("user_id = :uid", "uid={$eventData['data']}")->order("updated_at DESC")->fetch(true);
+
+        if($this->session_info->access_id >=3) {
+            echo $this->view->render("pages/search/event", [
+                "events" => $event
+            ]);
+        } else {
+            $this->router->redirect("app.home");
+        }
+    }
+
     /**
      * @param array $data
      */

@@ -11,6 +11,33 @@
 
     <div class="row">
         <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+
+                    <h3 class="card-title">Filtro</h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="alert alert-info alert-with-icon" data-notify="container">
+                        <span data-notify="icon" class="tim-icons icon-bell-55"></span>
+
+                        <span data-notify="message">
+                            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pesquise um evento a partir do nome do usuário</font></font>
+                        </span>
+                    </div>
+
+                    <form id="event-search" method="POST" name="event-search" action="<?= $router->route("api.event_search") ?>">
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="inputEmail4">Nome</label>
+                                <input name="e_search" type="text" class="form-control" id="inputEmail4" placeholder="Nome">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    </form>
+                </div>
+            </div>
             <div class="card ">
                 <div class="card-header">
                     <h3 class="card-title">Listagem de eventos</h3>
@@ -34,12 +61,12 @@
                                     foreach ($e->eventUser() as $u):
                                     ?>
                                     <tr>
-                                        <td class="text-left"><?= $u->id; ?></td>
-                                        <td class="text-left"><?= $u->name; ?></td>
-                                        <td class="text-left"><?= dateformat($e->created_at); ?></td>
-                                        <td class="text-left"><?= $e->description; ?></td>
-                                        <td class="text-left"><?= $e->type; ?></td>
-                                        <td class="text-center">
+                                        <td class="event-search-td text-left"><?= $u->id; ?></td>
+                                        <td class="event-search-td text-left"><?= $u->name; ?></td>
+                                        <td class="event-search-td text-left"><?= dateformat($e->created_at); ?></td>
+                                        <td class="event-search-td text-left"><?= $e->description; ?></td>
+                                        <td class="event-search-td text-left"><?= $e->type; ?></td>
+                                        <td class="event-search-td text-center">
                                             <span class="badge badge-pill <?= $e->status == "permitida" ? "badge-success" : "badge-warning" ?>"><?= $e->status; ?></span>
                                         </td>
                                     </tr>

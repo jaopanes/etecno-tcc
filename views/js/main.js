@@ -2,15 +2,17 @@ const baseUrl = 'http://localhost/tcc-etecno-master/';
 
 $(function () {
     $("form").submit(function (e) {
-        e.preventDefault();
-
         var form = $(this);
         var alert = $(".alert");
+
+        if(form.attr("method") == "POST") {
+            e.preventDefault();
+        }
 
         $.ajax({
             url: form.attr("action"),
             data: form.serialize(),
-            type: "POST",
+            type: form.attr("method"),
             dataType: "json",
             success: function (callback) {
                 if (callback.message) {

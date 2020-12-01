@@ -171,7 +171,7 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header">
-                        <h4 class="card-title">Log de requisições</h4>
+                        <h4 class="card-title">Log das últimas 10 requisições</h4>
                     </div>
                     <div class="card-body">
                         <?php if ($events->find("status = 'permitida' OR status = 'negada'")->fetch(true)) : ?>
@@ -189,7 +189,7 @@
                                     </thead>
                                     <tbody>
 
-                                        <?php foreach ($events->find("status = 'permitida' OR status = 'negada'")->order("updated_at DESC")->fetch(true) as $evt) :
+                                        <?php foreach ($events->find("status = 'permitida' OR status = 'negada'")->order("updated_at DESC")->limit(10)->fetch(true) as $evt) :
                                             foreach ($evt->eventUser() as $u) : ?>
                                                 <tr>
                                                     <td class="text-left"><?= $u->id; ?></td>

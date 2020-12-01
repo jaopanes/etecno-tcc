@@ -534,4 +534,23 @@ class Api extends Controller
             $this->log(["description" => "O usuário {$this->session_info->name} editou o estudante {$studentData['sid']}", "action" => "Edição"]);
         }
     }
+    public function eventSearch($data): void
+    {
+        $searchData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        if (in_array("", $searchData)) {
+            echo $this->ajaxResponse("message", [
+                "type" => "error",
+                "message" => "Preencha todos os campos!"
+            ]);
+
+            return;
+        }
+
+        $user = (new User())->find("name = :n", "n={$searchData['e_search']}")->fetch();
+
+        echo $this->ajaxResponse("redirect", [
+            "url" => $this->router->route("app.event_search", ["data" => $user->id])
+        ]);
+    }
 }
