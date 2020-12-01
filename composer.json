@@ -1,0 +1,28 @@
+{
+  "name": "jaopanes/tcc-etim",
+  "description": "Back-end of course completion work",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "João Birelo Neto",
+      "email": "njoao6016@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Source\\": "src/"
+    },
+    "files": [
+      "src/Config.php"
+    ]
+  },
+  "require": {
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "coffeecode/datalayer": "1.1.*",
+    "coffeecode/router": "1.0.7",
+    "league/plates": "v4.0.0-alpha",
+    "phpoffice/phpspreadsheet": "1.15.0"
+  }
+}
