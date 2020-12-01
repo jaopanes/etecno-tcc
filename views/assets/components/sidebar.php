@@ -25,6 +25,13 @@
                 </a>
             </li>
 
+            <li class="">
+                <a title="" href="<?= $router->route("app.events"); ?>">
+                    <i class="tim-icons icon-zoom-split"></i>
+                    <p>Eventos</p>
+                </a>
+            </li>
+
             <?php if ($access >= 4) :  ?>
                 <li class="">
                     <a title="" href="<?= $router->route("app.log"); ?>">

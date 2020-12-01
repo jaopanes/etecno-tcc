@@ -17,7 +17,7 @@ Para a rodar a aplicação, são necessários na máquina
 No arquivo /src/Config--example.php estão presentes as constantes para configuração da aplicação que incluêm URL e informações do banco de dados. Logo após aplicar suas configurações, renomeie o arquivo para Config.php
 
 ### Técnologias e dependências utilizadas
-- [PHP 7.2](php.net)
+- [PHP 7.2](https://php.net)
 - [Composer](https://getcomposer.org/)
 - [CoffeeCode/DataLayer](https://packagist.org/packages/coffeecode/datalayer)
 - [CoffeeCode/Routes](https://packagist.org/packages/coffeecode/router)

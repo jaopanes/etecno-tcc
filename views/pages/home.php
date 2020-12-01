@@ -181,7 +181,6 @@
                                         <tr>
                                             <th class="text-left">RM</th>
                                             <th class="text-left">Nome</th>
-                                            <th class="text-left">Sala</th>
                                             <th class="text-left">Hora</th>
                                             <th class="text-left">Descrição</th>
                                             <th class="text-left">Tipo</th>
@@ -194,10 +193,7 @@
                                             foreach ($evt->eventUser() as $u) : ?>
                                                 <tr>
                                                     <td class="text-left"><?= $u->id; ?></td>
-                                                    <td class="text-left">
-                                                        <?= $u->name; ?>
-                                                    </td>
-                                                    <td class="text-left">xxx - sala</td>
+                                                    <td class="text-left"><?= $u->name; ?></td>
                                                     <td class="text-left"><?= dateformat($evt->created_at); ?></td>
                                                     <td class="text-left"><?= $evt->description; ?></td>
                                                     <td class="text-left"><?= $evt->type; ?></td>

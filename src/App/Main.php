@@ -325,6 +325,19 @@ class Main extends Controller
         }
     }
 
+    public function events(): void
+    {
+        if($this->session_info->access_id >= 3) {
+            $events = new Event();
+
+            echo $this->view->render("pages/lists/event", [
+                "events" => $events
+            ]);
+        } else {
+            $this->router->redirect("app.home");
+        }
+    }
+
     /**
      * @param array $data
      */
