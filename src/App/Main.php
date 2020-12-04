@@ -73,10 +73,13 @@ class Main extends Controller
             $tags = (new Tag())->find()->fetch(true);
             $role = (new Role())->find()->fetch(true);
 
+            $passwd = $this->generatePasswd(7);
+
             echo $this->view->render("pages/forms/register", [
                 "tags" => $tags,
                 "role" => $role,
-                "session_info" => $this->session_info->access_id
+                "session_info" => $this->session_info->access_id,
+                "passwd" => $passwd
             ]);
         } else {
             $this->router->redirect("app.home");

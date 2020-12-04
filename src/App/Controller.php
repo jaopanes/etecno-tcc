@@ -85,4 +85,32 @@ abstract class Controller
 
         $log->save();
     }
+
+    public function generatePasswd($size, $uppercase = true, $lowercase = true, $number = true, $symbol = true)
+    {
+        $alphabetU = 'ABCDEFJHIJHLMNOPQRSTUVWXYZ';
+        $alphabetL = 'abcdefghijklmnopqrstuvwxyz';
+        $numbers = '1234567890';
+        $symbols = '!@#$%&*()_+=';
+
+        $passwd = '';
+
+        if($uppercase) {
+            $passwd .= str_shuffle($alphabetU);
+        }
+
+        if ($lowercase) {
+            $passwd .= str_shuffle($alphabetL);
+        }
+
+        if ($number) {
+            $passwd .= str_shuffle($numbers);
+        }
+
+        if ($symbol) {
+            $passwd .= str_shuffle($symbols);
+        }
+
+        return substr(str_shuffle($passwd), 0, $size);
+    }
 }

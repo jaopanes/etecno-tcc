@@ -39,11 +39,11 @@
 
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Senha</label>
-                        <input name="u_pass" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        <input name="u_pass" type="text" class="form-control" readonly id="inputPassword4" value="<?= $passwd ?>">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="inputState">Ranking</label>
+                        <label for="inputState">Tag</label>
                         <select name="u_tag" id="inputState" class="form-control">
                             <?php foreach ($tags as $t) : ?>
                                 <option value="<?= $t->tag ?>"><?= $t->tag ?></option>
