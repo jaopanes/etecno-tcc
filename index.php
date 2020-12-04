@@ -57,6 +57,10 @@ $router->get("/eventos", "Main:events", "app.events");
 $router->get("/eventos/novo", "Main:eventAdd", "app.event_add");
 $router->get("/eventos/pesquisa/usuario/{data}", "Main:eventSearch", "app.event_search");
 
+//Profile
+$router->get("/perfil", "Main:profile", "app.profile");
+$router->get("/perfil/logs", "Main:personalLog", "app.personal_log");
+
 /**
  * Api
  */
@@ -81,6 +85,9 @@ $router->post("/classroom_edit/{cid}", "Api:classroomEdit", "api.classroom_edit"
 //Student API
 $router->post("/student_add", "Api:studentAdd", "api.student_add");
 $router->post("/student_edit/{sid}", "Api:studentEdit", "api.student_edit");
+
+//Profire
+$router->post("/personal_edit", "Api:personalEdit", "api.personal_edit");
 
 /**
  * Error

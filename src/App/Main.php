@@ -338,7 +338,7 @@ class Main extends Controller
         }
     }
 
-    public function eventSearch($data): void
+    public function eventSearch(array $data): void
     {
         $eventData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
@@ -351,6 +351,24 @@ class Main extends Controller
         } else {
             $this->router->redirect("app.home");
         }
+    }
+
+    public function profile(): void
+    {
+        $user = (new User())->find("id = :i", "i={$this->session_info->id}")->fetch(true);
+
+        echo $this->view->render("pages/profile", [
+            "user" => $user
+        ]);
+    }
+
+    public function personalLog(): void
+    {
+        $log = (new Log())->find("user_id = :i", ":i={$this->session_info->id}")->order("updated_at DESC")->fetch(true);
+
+        echo $this->view->render("pages/personal_log", [
+            "log" => $log
+        ]);
     }
 
     /**

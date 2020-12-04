@@ -47,7 +47,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th class="text-left">RM</th>
+                                <th class="text-left">ID do evento</th>
                                 <th class="text-left">Nome</th>
                                 <th class="text-left">Hora</th>
                                 <th class="text-left">Descrição</th>
@@ -61,7 +61,7 @@
                                     foreach ($e->eventUser() as $u):
                                     ?>
                                     <tr>
-                                        <td class="event-search-td text-left"><?= $u->id; ?></td>
+                                        <td class="event-search-td text-left"><?= $e->id; ?></td>
                                         <td class="event-search-td text-left"><?= $u->name; ?></td>
                                         <td class="event-search-td text-left"><?= dateformat($e->created_at); ?></td>
                                         <td class="event-search-td text-left"><?= $e->description; ?></td>

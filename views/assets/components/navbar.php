@@ -49,8 +49,8 @@
                         </p>
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Perfil</a></li>
-                        <li class="nav-link"><a href="<?= $router->route("app.log"); ?>" class="nav-item dropdown-item">Logs</a></li>
+                        <li class="nav-link"><a href="<?= $router->route("app.profile"); ?>" class="nav-item dropdown-item">Perfil</a></li>
+                        <li class="nav-link"><a href="<?= $router->route("app.personal_log"); ?>" class="nav-item dropdown-item">Logs</a></li>
                         <li class="dropdown-divider"></li>
                         <li class="nav-link"><a href="<?= $router->route("app.logoff"); ?>" class="nav-item dropdown-item">Sair</a></li>
                     </ul>

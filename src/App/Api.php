@@ -534,7 +534,7 @@ class Api extends Controller
             $this->log(["description" => "O usuário {$this->session_info->name} editou o estudante {$studentData['sid']}", "action" => "Edição"]);
         }
     }
-    public function eventSearch($data): void
+    public function eventSearch(array $data): void
     {
         $searchData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
@@ -552,5 +552,41 @@ class Api extends Controller
         echo $this->ajaxResponse("redirect", [
             "url" => $this->router->route("app.event_search", ["data" => $user->id])
         ]);
+    }
+
+    public function personalEdit(array $data): void
+    {
+        $userData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        $user = new User();
+
+        if($userData['u_email'] != $this->session_info->email ||
+            $userData['u_name'] != $this->session_info->name ||
+            $userData['u_id'] != $this->session_info->id) {
+            echo $this->ajaxResponse("message", [
+                "type" => "error",
+                "message" => "Erro no sistema!"
+            ]);
+
+            return;
+        }
+
+        $user->id = $userData['u_id'];
+        $user->name = $userData['u_name'];
+        $user->email = $userData['u_email'];
+        $user->passwd = $userData['u_pass'];
+
+        if(!$user->save()) {
+            echo $this->ajaxResponse("message", [
+                "type" => "error",
+                "message" => $user->fail()->getMessage()
+            ]);
+        } else {
+            echo $this->ajaxResponse("redirect", [
+                "url" => $this->router->route("app.profile")
+            ]);
+
+            $this->log(["description" => "O usuário {$this->session_info->name} editou a própria senha", "action" => "Edição"]);
+        }
     }
 }
