@@ -1,11 +1,10 @@
 const baseUrl = 'http://localhost/tcc-etecno-master/';
 
-$(function () {
-    $("form").submit(function (e) {
+$(function() {
+    $("form").submit(function(e) {
         var form = $(this);
-        var alert = $(".alert");
 
-        if(form.attr("method") == "POST") {
+        if (form.attr("method") == "POST") {
             e.preventDefault();
         }
 
@@ -14,11 +13,9 @@ $(function () {
             data: form.serialize(),
             type: form.attr("method"),
             dataType: "json",
-            success: function (callback) {
+            success: function(callback) {
                 if (callback.message) {
-                    alert.html(callback.message.message).fadeIn();
-                } else {
-                    alert.fadeOut();
+                    showNotification("top", "center", callback.message.message, callback.message.type)
                 }
 
                 if (callback.redirect) {
@@ -28,7 +25,7 @@ $(function () {
         });
     });
 
-    $(".status-event").click(function () {
+    $(".status-event").click(function() {
         var btn = $(this);
 
         $.ajax({
@@ -39,9 +36,12 @@ $(function () {
                 idEvent: btn.data("id"),
                 type: btn.data("type")
             },
-            success: function (callback) {
-                alert(callback.message.message);
-                window.location.reload();
+            success: function(callback) {
+                showNotification("top", "center", callback.message.message, callback.message.type)
+
+                setInterval(function() {
+                    window.location.reload();
+                }, 1500);
             }
         });
 
@@ -118,3 +118,18 @@ $(function () {
         options: gradientChartOptionsConfigurationWithTooltipGreen
     });
 });
+
+function showNotification(from, align, text, color) {
+    $.notify({
+        icon: "tim-icons icon-bell-55",
+        message: text
+
+    }, {
+        type: color,
+        timer: 8000,
+        placement: {
+            from: from,
+            align: align
+        }
+    });
+}

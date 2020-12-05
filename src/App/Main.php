@@ -5,6 +5,7 @@ namespace Source\App;
 use Source\Model\Classroom;
 use Source\Model\Event;
 use Source\Model\Log;
+use Source\Model\Notification;
 use Source\Model\Tag;
 use Source\Model\Student;
 use Source\Model\User;
@@ -372,6 +373,51 @@ class Main extends Controller
         echo $this->view->render("pages/personal_log", [
             "log" => $log
         ]);
+    }
+
+    public function notification(): void
+    {
+        $notification = (new Notification())->find()->order("id DESC")->fetch(true);
+
+        if($this->session_info->access_id >=4) {
+            echo $this->view->render("pages/lists/notification", [
+                "notification" => $notification
+            ]);
+        } else {
+            $this->router->redirect("app.home");
+        }
+    }
+
+    public function notificationAdd(): void
+    {
+        if($this->session_info->access_id >=4) {
+            echo $this->view->render("pages/forms/notification", []);
+        } else {
+            $this->router->redirect("app.home");
+        }
+    }
+
+    public function notificationEdit(array $data): void
+    {
+        $notData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        if ($this->session_info->access_id >= 4) {
+            $notification = (new Notification())->findById($notData['nid']);
+
+            if ($notification) {
+                echo $this->view->render(
+                    "pages/edit/notification",
+                    [
+                        "id" => $notData['nid'],
+                        "notification" => $notification,
+                    ]
+                );
+            } else {
+                $this->router->redirect("error", ["errcode" => "404"]);
+            }
+        } else {
+            $this->router->redirect("app.home");
+        }
     }
 
     /**

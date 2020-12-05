@@ -18,47 +18,47 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-
                         <table class="table">
                             <thead>
-                            <tr>
-                                <th class="text-center">ID</th>
-                                <th>Tipo</th>
-                                <th>Descrição</th>
-                                <th>Criada em</th>
-                            </tr>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th>Tipo</th>
+                                    <th>Descrição</th>
+                                    <th>Criada em</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <?php if ($log) :
-                                foreach ($log as $l) : ?>
-                                    <tr>
-                                        <td class="text-center"><?= $l->id; ?></td>
-                                        <td><?= $l->action; ?></td>
-                                        <td><?= $l->description; ?></td>
-                                        <td><?= dateformat($l->created_at); ?></td>
-                                    </tr>
-                                <?php endforeach;
-                            else : ?>
+
+                                <?php if ($log) :
+                                    foreach ($log as $l) : ?>
+                                        <tr>
+                                            <td class="text-center"><?= $l->id; ?></td>
+                                            <td><?= $l->action; ?></td>
+                                            <td><?= $l->description; ?></td>
+                                            <td><?= dateformat($l->created_at); ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    
                             </tbody>
                         </table>
 
+                    <?php else : ?>
                         <div class="alert alert-primary">
                             <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Perto">
                                 <i class="tim-icons icon-simple-remove"></i>
                             </button>
                             <span><b>
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;"></font>Oops...
-                </font>
-            </b>
-            <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Ainda não existem logs.</font>
-            </font>
-        </span>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;"></font>Oops...
+                                    </font>
+                                </b>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Ainda não existem logs.</font>
+                                </font>
+                            </span>
                         </div>
-                        <?php endif; ?>
-                        </tbody>
-                        </table>
+                    <?php endif; ?>
+
                     </div>
                 </div>
             </div>

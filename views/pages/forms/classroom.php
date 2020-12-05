@@ -1,11 +1,11 @@
-<?php $v->layout("_theme", ["title" => "Cadastro"]); ?>
+<?php $v->layout("_theme", ["title" => "Cadastro de classe"]); ?>
 
 <main>
 
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= $router->route("app.home"); ?>">Home</a></li>            
-            <li class="breadcrumb-item"><a href="<?= $router->route("app.classroom"); ?>">Classes</a></li>            
+            <li class="breadcrumb-item"><a href="<?= $router->route("app.home"); ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?= $router->route("app.classroom"); ?>">Classes</a></li>
             <li class="breadcrumb-item active" aria-current="page">Cadastrar</li>
         </ol>
     </nav>
@@ -13,20 +13,12 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">Cadastro de classe</h3>
+
+            <div class="alert alert-warning" role="alert">
+                <strong>Atenção!</strong> Certifique-se que os dados estão corretos.
+            </div>
+
             <form id="student-register" method="tag" name="student_register" action="<?= $router->route("api.classroom_add"); ?>">
-
-                <div class="alert alert-info alert-with-icon" data-notify="container">
-                    <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Perto">
-                        <i class="tim-icons icon-simple-remove"></i>
-                    </button>
-                    <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-                    <span data-notify="message">
-                        <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">Certifique-se que os dados estejam corretos.</font>
-                        </font>
-                    </span>
-                </div>
-
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         Digite o nome da classe:

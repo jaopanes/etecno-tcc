@@ -52,39 +52,6 @@
                                     <h6><?= $student == 1 ? "estudante cadastrado" : "estudantes cadastrados" ?><h6>
                                 </div>
                             </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
-
-    <?php if ($access >= 3) : ?>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <h5 class="card-category">Total de entradas</h5>
-                        <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> <?= $events->find("type = 'entrada'")->count(); ?> </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="chartLinePurple"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <h5 class="card-category">Total de saídas</h5>
-                        <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> <?= $events->find("type = 'saida'")->count(); ?> </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="chartLineGreen"></canvas>
                         </div>
                     </div>
                 </div>
@@ -152,14 +119,8 @@
                                 </table>
                             </div>
                         <?php else : ?>
-                            <div class="alert alert-info alert-with-icon" data-notify="container">
-                                <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-
-                                <span data-notify="message">
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">Nenhuma requisição pendente.</font>
-                                    </font>
-                                </span>
+                            <div class="alert alert-warning" role="alert">
+                                Não existem requisições pendentes
                             </div>
                         <?php endif; ?>
                     </div>
@@ -184,7 +145,7 @@
                                             <th class="text-left">Hora</th>
                                             <th class="text-left">Descrição</th>
                                             <th class="text-left">Tipo</th>
-                                            <th class="text-center">Status</th>  
+                                            <th class="text-center">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -208,14 +169,8 @@
                                 </table>
                             </div>
                         <?php else : ?>
-                            <div class="alert alert-info alert-with-icon" data-notify="container">
-                                <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-
-                                <span data-notify="message">
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">Nenhuma requisição pendente.</font>
-                                    </font>
-                                </span>
+                            <div class="alert alert-warning" role="alert">
+                                Não existem log de requisições
                             </div>
                         <?php endif; ?>
                     </div>
@@ -264,14 +219,8 @@
                                 </table>
                             </div>
                         <?php else : ?>
-                            <div class="alert alert-info alert-with-icon" data-notify="container">
-                                <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-
-                                <span data-notify="message">
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">Nenhuma requisição pendente.</font>
-                                    </font>
-                                </span>
+                            <div class="alert alert-warning" role="alert">
+                                Você não possuí nenhuma requisição
                             </div>
                         <?php endif; ?>
                     </div>

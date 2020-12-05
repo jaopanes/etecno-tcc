@@ -22,7 +22,6 @@
     "ext-pdo": "*",
     "coffeecode/datalayer": "1.1.*",
     "coffeecode/router": "1.0.7",
-    "league/plates": "v4.0.0-alpha",
-    "phpoffice/phpspreadsheet": "1.15.0"
+    "league/plates": "v4.0.0-alpha"
   }
 }

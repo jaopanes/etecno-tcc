@@ -1,7 +1,4 @@
 <div class="sidebar">
-    <!--
-      Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-  -->
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -43,6 +40,15 @@
 
             <?php if ($access >= 4) :  ?>
                 <li class="">
+                    <a title="" href="<?= $router->route("app.notification"); ?>">
+                        <i class="tim-icons icon-simple-add"></i>
+                        <p>Notificações</p>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <?php if ($access >= 4) :  ?>
+                <li class="">
                     <a href="<?= $router->route("app.tag"); ?>">
                         <i class="tim-icons icon-align-center"></i>
                         <p>Tags</p>
@@ -54,12 +60,6 @@
                 <a href="<?= $router->route("app.classroom"); ?>">
                     <i class="tim-icons icon-world"></i>
                     <p>Salas</p>
-                </a>
-            </li>
-            <li class="active-pro">
-                <a href="#">
-                    <i class="tim-icons icon-spaceship"></i>
-                    <p>Super</p>
                 </a>
             </li>
         </ul>

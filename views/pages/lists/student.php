@@ -1,7 +1,6 @@
 <?php $v->layout("_theme", ["title" => "Lista de estudantes"]); ?>
 
 <main>
-
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= $router->route("app.home"); ?>">Home</a></li>
@@ -30,21 +29,21 @@
                     <h3 class="card-title">Listagem de estudantes</h3>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-left">RM</th>
-                                    <th class="text-left">Nome</th>
-                                    <th class="text-left">Classe</th>
-                                    <th class="text-right">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php if ($student->find()->fetch(true)) :
-                                    foreach ($student->find()->fetch(true) as $s) :
+                    <?php if ($student->find()->fetch(true)) : ?>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">RM</th>
+                                        <th class="text-left">Nome</th>
+                                        <th class="text-left">Classe</th>
+                                        <th class="text-right">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($student->find()->fetch(true) as $s) :
                                         foreach ($s->studentUser() as $u) :
-                                ?>
+                                    ?>
                                             <tr>
                                                 <td class="text-left"><?= $s->id; ?></td>
                                                 <td class="text-left"><?= $u->name; ?></td>
@@ -61,20 +60,17 @@
                                                 </td>
                                             </tr>
                                     <?php endforeach;
-                                    endforeach;
-                                else : ?>
-                                    <li>
-                                        <div class="std-name">Não existem usuários cadastrados</div>
-                                    </li>
-                                <?php endif; ?>
-
-                            </tbody>
-                        </table>
-                    </div>
-
+                                    endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php else : ?>
+                        <div class="alert alert-warning" role="alert">
+                            Não existem estudantes cadastrados
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-
         </div>
     </div>
 </main>

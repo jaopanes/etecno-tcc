@@ -31,11 +31,9 @@
                         </p>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                        <li class="nav-link"><a href="#" class="nav-item dropdown-item">Suponha que esta seja uma not. do diretor</a></li>
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">estas not. serão limitadas a 5</a></li>
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">é basicamnete um SELECT *</a></li>
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">então pega os 5 ultimos</a></li>
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">e exibe aqui, seria um "for"</a></li>
+                        <?php foreach ($notifications as $n) : ?>
+                            <li class="nav-link"><a href="#" class="nav-item dropdown-item"><?= $n->content ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
                 <li class="dropdown nav-item">

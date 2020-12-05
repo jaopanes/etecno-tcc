@@ -41,7 +41,7 @@ class Login extends Controller
 
         if (!$u_email || !$u_pass) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Informe seu e-mail e senha para logar."
             ]);
 
@@ -51,7 +51,7 @@ class Login extends Controller
         $user = (new User())->find("email = :e AND status = :s", "e={$u_email}&s=ativo")->fetch();
         if (!$user || !password_verify($u_pass, $user->passwd)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "E-mail ou senha incorretos ou usuário inativo."
             ]);
 

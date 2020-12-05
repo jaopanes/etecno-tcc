@@ -23,16 +23,10 @@
                 <span class="color-label">Modo Dark</span>
             </li>
             <li class="button-container">
-                <a href="#" target="_blank" class="btn btn-primary btn-block btn-round">#</a>
-                <a href="#" target="_blank" class="btn btn-default btn-block btn-round">
-                    Site Etec
+               
+                <a href="https://etecmogiguacu.com.br" target="_blank" class="btn btn-default btn-block btn-round">
+                    Site da ETEC
                 </a>
-            </li>
-            <li class="header-title">Siga-nos</li>
-            <li class="button-container text-center">
-                <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i></button>
-                <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i></button>
-                <br>
             </li>
         </ul>
     </div>

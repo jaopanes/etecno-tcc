@@ -14,11 +14,8 @@
         <div class="card-body">
             <h3 class="card-title">Editar sala</h3>
 
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Atenção!</strong> Certifique-se que os dados estejam corretos.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="tim-icons icon-simple-remove"></i>
-                </button>
+            <div class="alert alert-warning" role="alert">
+                <strong>Atenção!</strong> Certifique-se que os dados estão corretos.
             </div>
 
             <form id="student-edit" method="POST" name="student_edit" action="<?= $router->route("api.classroom_edit", ["cid" => $id]); ?>">

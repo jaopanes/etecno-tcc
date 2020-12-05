@@ -4,10 +4,12 @@ namespace Source\App;
 
 use Source\Model\Classroom;
 use Source\Model\Event;
+use Source\Model\Notification;
 use Source\Model\Student;
 use Source\Model\Tag;
 use Source\Model\User;
 use Source\Model\Role;
+use CoffeeCode\DataLayer\Connect;
 
 /**
  * Class Api
@@ -35,7 +37,7 @@ class Api extends Controller
         $userData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
         if (in_array("", $userData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -50,7 +52,7 @@ class Api extends Controller
             $tagId = $tag->id;
         } else {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Insira um apelido válido!"
             ]);
 
@@ -65,7 +67,7 @@ class Api extends Controller
             $roleId = $role->id;
         } else {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Insira uma permissão válida!"
             ]);
 
@@ -85,7 +87,7 @@ class Api extends Controller
 
         if (!$user->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $user->fail()->getMessage()
             ]);
         } else {
@@ -106,7 +108,7 @@ class Api extends Controller
 
         if (in_array("", $tagData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -122,7 +124,7 @@ class Api extends Controller
 
         if (!$tag->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $tag->fail()->getMessage()
             ]);
         } else {
@@ -143,7 +145,7 @@ class Api extends Controller
 
         if (in_array("", $tagData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -152,7 +154,7 @@ class Api extends Controller
 
         if ($tagData['tid'] != $tagData['t_id']) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Dados incongruentes!"
             ]);
 
@@ -164,7 +166,7 @@ class Api extends Controller
 
         if (!$tag->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $tag->fail()->getMessage()
             ]);
         } else {
@@ -185,7 +187,7 @@ class Api extends Controller
 
         if (in_array("", $userData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -200,7 +202,7 @@ class Api extends Controller
             $statusU = 'inativo';
         } else {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Insira um status válido!"
             ]);
 
@@ -211,7 +213,7 @@ class Api extends Controller
 
         if (!$tag) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Insira uma tag válida!"
             ]);
 
@@ -226,7 +228,7 @@ class Api extends Controller
             $roleId = $role->id;
         } else {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Insira uma permissão válida!"
             ]);
 
@@ -243,7 +245,7 @@ class Api extends Controller
 
         if (!$user->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $user->fail()->getMessage()
             ]);
         } else {
@@ -264,7 +266,7 @@ class Api extends Controller
 
         if (in_array("", $eventData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -279,7 +281,7 @@ class Api extends Controller
             $typeE = 'saida';
         } else {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Insira um status válido!"
             ]);
 
@@ -294,7 +296,7 @@ class Api extends Controller
 
         if (!$event->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $event->fail()->getMessage()
             ]);
         } else {
@@ -337,7 +339,7 @@ class Api extends Controller
             $this->log(["description" => "O usuário {$this->session_info->name} negou o evento {$infoEvent['idEvent']}", "action" => "Permissão"]);
         } else {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => 'Função não reconhecida pelo sistema.'
             ]);
         }
@@ -352,7 +354,7 @@ class Api extends Controller
 
         if (in_array("", $classroomData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -366,7 +368,7 @@ class Api extends Controller
 
         if (!$classroom->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $classroom->fail()->getMessage()
             ]);
         } else {
@@ -384,7 +386,7 @@ class Api extends Controller
 
         if (in_array("", $classroomData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -399,7 +401,7 @@ class Api extends Controller
             $statusC = 'inativo';
         } else {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Insira um status válido!"
             ]);
 
@@ -413,7 +415,7 @@ class Api extends Controller
 
         if (!$classroom->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $classroom->fail()->getMessage()
             ]);
         } else {
@@ -434,7 +436,7 @@ class Api extends Controller
 
         if (in_array("", $studentData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -447,7 +449,7 @@ class Api extends Controller
 
         if ($student->find("user_id = {$studentData['s_id']}")->fetch(true)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Usuário já cadastrado como estudante!"
             ]);
 
@@ -456,7 +458,7 @@ class Api extends Controller
 
         if (!$user->find("id = {$studentData['s_id']}")->fetch(true)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Este usuário não existe em nosso sistema!"
             ]);
 
@@ -465,7 +467,7 @@ class Api extends Controller
 
         if (!$class->find("id = {$studentData['s_class']}")->fetch(true)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Esta classe não existe em nosso sistema!"
             ]);
 
@@ -477,7 +479,7 @@ class Api extends Controller
 
         if (!$student->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $student->fail()->getMessage()
             ]);
         } else {
@@ -495,7 +497,7 @@ class Api extends Controller
 
         if (in_array("", $studentData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -510,7 +512,7 @@ class Api extends Controller
             $statusS = 'inativo';
         } else {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Insira um status válido!"
             ]);
 
@@ -523,7 +525,7 @@ class Api extends Controller
 
         if (!$student->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $student->fail()->getMessage()
             ]);
         } else {
@@ -540,7 +542,7 @@ class Api extends Controller
 
         if (in_array("", $searchData)) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Preencha todos os campos!"
             ]);
 
@@ -564,7 +566,7 @@ class Api extends Controller
             $userData['u_name'] != $this->session_info->name ||
             $userData['u_id'] != $this->session_info->id) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => "Erro no sistema!"
             ]);
 
@@ -578,7 +580,7 @@ class Api extends Controller
 
         if(!$user->save()) {
             echo $this->ajaxResponse("message", [
-                "type" => "error",
+                "type" => "danger",
                 "message" => $user->fail()->getMessage()
             ]);
         } else {
@@ -588,5 +590,108 @@ class Api extends Controller
 
             $this->log(["description" => "O usuário {$this->session_info->name} editou a própria senha", "action" => "Edição"]);
         }
+    }
+
+    public function notificationAdd(array $data): void
+    {
+        $notData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        if (in_array("", $notData)) {
+            echo $this->ajaxResponse("message", [
+                "type" => "danger",
+                "message" => "Preencha todos os campos!"
+            ]);
+
+            return;
+        }
+
+        /**
+         * Tag class instance
+         */
+        $notification = new Notification();
+
+        $notification->content = $notData['n_content'];
+        $notification->user_id = $this->session_info->id;
+
+        if (!$notification->save()) {
+            echo $this->ajaxResponse("message", [
+                "type" => "danger",
+                "message" => $notification->fail()->getMessage()
+            ]);
+        } else {
+            echo $this->ajaxResponse("redirect", [
+                "url" => $this->router->route("app.notification")
+            ]);
+        }
+
+        $this->log(["description" => "O usuário {$this->session_info->name} adicionou uma nova notificação", "action" => "Adicionar"]);
+    }
+
+    public function notificationEdit(array $data): void
+    {
+        $notData = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        if (in_array("", $notData)) {
+            echo $this->ajaxResponse("message", [
+                "type" => "danger",
+                "message" => "Preencha todos os campos!"
+            ]);
+
+            return;
+        }
+
+        if ($notData['nid'] != $notData['n_id']) {
+            echo $this->ajaxResponse("message", [
+                "type" => "danger",
+                "message" => "Dados incongruentes!"
+            ]);
+
+            return;
+        }
+
+        $notification = (new Notification())->findById($notData['nid']);
+        $notification->content = $notData['n_content'];
+
+        if (!$notification->save()) {
+            echo $this->ajaxResponse("message", [
+                "type" => "danger",
+                "message" => $notification->fail()->getMessage()
+            ]);
+        } else {
+            echo $this->ajaxResponse("redirect", [
+                "url" => $this->router->route("app.notification")
+            ]);
+        }
+
+        $this->log(["description" => "O usuário {$this->session_info->name} editou a notificação {$notData['n_id']}", "action" => "Edição"]);
+    }
+
+    public function chartJs()
+    {
+        $connect = Connect::getInstance();
+        $data = $connect->query("SELECT MONTH(event.created_at) AS 'mes', COUNT(MONTH(event.created_at)) AS 'qtd' FROM event GROUP BY MONTH(event.created_at)");
+
+        $months = array("", "JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ");
+
+        $response = array(
+            array("" => 0),
+            array("JAN" => 0),
+            array("FEV" => 0),
+            array("MAR" => 0),
+            array("ABR" => 0),
+            array("MAI" => 0),
+            array("JUN" => 0),
+            array("JUL" => 0),
+            array("AGO" => 0),
+            array("SET" => 0),
+            array("OUT" => 0),
+            array("NOV" => 0),
+            array("DEZ" => 0),
+        );
+
+        foreach ($data->fetchAll() as $d) {
+        }
+
+        var_dump($response[1]['JAN']);
     }
 }

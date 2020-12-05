@@ -1,4 +1,4 @@
-<?php $v->layout("_theme", ["title" => "Cadastro"]); ?>
+<?php $v->layout("_theme", ["title" => "Cadastro de usuário"]); ?>
 
 <main>
 
@@ -13,19 +13,12 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">Cadastrar usuário</h3>
-            <form id="student-register" method="POST" name="student_register" action="<?= $router->route("api.user_add"); ?>">
-                <div class="alert alert-info alert-with-icon" data-notify="container">
-                    <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Perto">
-                        <i class="tim-icons icon-simple-remove"></i>
-                    </button>
-                    <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-                    <span data-notify="message">
-                        <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">Certifique-se que os dados estejam corretos.</font>
-                        </font>
-                    </span>
-                </div>
 
+            <div class="alert alert-warning" role="alert">
+                <strong>Atenção!</strong> Certifique-se que os dados estão corretos.
+            </div>
+
+            <form id="student-register" method="POST" name="student_register" action="<?= $router->route("api.user_add"); ?>">
                 <div class="form-group">
                     <label for="inputAddress">Nome</label>
                     <input name="u_name" type="text" class="form-control" id="inputAddress" placeholder="Nome">

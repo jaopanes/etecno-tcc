@@ -10,6 +10,7 @@ namespace Source\App;
 use CoffeeCode\Router\Router;
 use League\Plates\Engine;
 use Source\Model\Log;
+use Source\Model\Notification;
 use Source\Model\User;
 use Source\Model\Role;
 
@@ -49,7 +50,7 @@ abstract class Controller
         /* Session */
         if (!empty($_SESSION['user'])) {
             $this->session_info = (new User())->findById($_SESSION['user'])->data();
-            $this->view->addData(["router" => $this->router, "access" => $this->session_info->access_id]);
+            $this->view->addData(["router" => $this->router, "access" => $this->session_info->access_id, "notifications" => (new Notification())->find("status = 'ativo'")->order("id DESC")->limit(5)->fetch(true) ]);
         } else {
             $this->view->addData(["router" => $this->router]);
         }

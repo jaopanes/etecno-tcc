@@ -1,5 +1,4 @@
 <script>
-
     $(document).ready(function() {
         $().ready(function() {
             $sidebar = $('.sidebar');

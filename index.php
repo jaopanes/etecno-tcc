@@ -61,6 +61,11 @@ $router->get("/eventos/pesquisa/usuario/{data}", "Main:eventSearch", "app.event_
 $router->get("/perfil", "Main:profile", "app.profile");
 $router->get("/perfil/logs", "Main:personalLog", "app.personal_log");
 
+//Notification
+$router->get("/notificacoes", "Main:notification", "app.notification");
+$router->get("/notificacoes/novo", "Main:notificationAdd", "app.new_notification");
+$router->get("/notificacao/{nid}", "Main:notificationEdit", "app.notification_edit");
+
 /**
  * Api
  */
@@ -86,8 +91,15 @@ $router->post("/classroom_edit/{cid}", "Api:classroomEdit", "api.classroom_edit"
 $router->post("/student_add", "Api:studentAdd", "api.student_add");
 $router->post("/student_edit/{sid}", "Api:studentEdit", "api.student_edit");
 
-//Profire
+//Profire API
 $router->post("/personal_edit", "Api:personalEdit", "api.personal_edit");
+
+//Notification API
+$router->post("/notification_add", "Api:notificationAdd", "api.notification_add");
+$router->post("/notification_edit/{nid}", "Api:notificationEdit", "api.notification_edit");
+
+//Chartjs API
+$router->get("/chartjs", "Api:chartJs", "api.chat_js");
 
 /**
  * Error
