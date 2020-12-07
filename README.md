@@ -5,7 +5,9 @@ Esse projeto corresponde ao Trabalho de Conclusão de Curso do ano de 2020 para 
 - [X] Controle de permissão
 - [X] Gerador de Logs e controle de acesso
 - [X] CRUD de todas as tabelas do banco
-- [ ]  Filtro de pesquisa
+- [X] Filtro de pesquisa
+- [X] Controle de logs pessoais
+- [X] Perfil
 
 ## Requisitos para a aplicação
 Para a rodar a aplicação, são necessários na máquina
@@ -15,6 +17,8 @@ Para a rodar a aplicação, são necessários na máquina
 
 ## Configuração 
 No arquivo /src/Config--example.php estão presentes as constantes para configuração da aplicação que incluêm URL e informações do banco de dados. Logo após aplicar suas configurações, renomeie o arquivo para Config.php
+
+No arquivo views/assets/js/main.js existe uma variável de base para URL, edite-a correspondente ao seu site
 
 ### Técnologias e dependências utilizadas
 - [PHP 7.2](https://php.net)

@@ -18,7 +18,7 @@
                 <strong>Atenção!</strong> Certifique-se que os dados estão corretos.
             </div>
 
-            <form id="student-register" method="tag" name="student_register" action="<?= $router->route("api.classroom_add"); ?>">
+            <form id="student-register" method="POST" name="student_register" action="<?= $router->route("api.classroom_add"); ?>">
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         Digite o nome da classe:
