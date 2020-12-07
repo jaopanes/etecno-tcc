@@ -70,7 +70,7 @@ class Main extends Controller
      */
     public function register(): void
     {
-        if ($this->session_info->access_id >= 3) {
+        if ($this->session_info->access_id >= 4) {
             $tags = (new Tag())->find()->fetch(true);
             $role = (new Role())->find()->fetch(true);
 
